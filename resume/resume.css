@@ -7,7 +7,9 @@
 
 body {
   background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
+  max-width: 90em;
   padding: 5em 1em 0; /* To offset the fixed header during navigation to id anchors */
 }
 
@@ -48,6 +50,7 @@ header > * {
 }
 
 html {
+  background-color: rgb(240, 240, 240);
   margin: 0;
   padding: 0;
   position: relative;
