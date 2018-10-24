@@ -116,12 +116,18 @@ header {
   background-color: rgb(60, 60, 60);
   display: flex;
   flex-flow: row nowrap;
+  height: calc(1.5em * 2 + 1.2em * 1.25);
   justify-content: space-between;
+  left: 0;
   padding: 1.5em 1em;
   position: fixed;
   top: 0;
-  left: 0;
+  transition: height 0.25s;
   width: 100%;
+}
+
+header.expanded {
+  height: calc(1.5em * 2 + 2 * 1.2em * 1.25);
 }
 
 html {
@@ -222,6 +228,7 @@ nav > ul a, #external-links a {
   color: white;
   font-family: "K2D", sans-serif;
   font-weight: 300;
+  line-height: 1.25em;
   text-decoration: none;
 }
 
