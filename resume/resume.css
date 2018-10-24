@@ -9,8 +9,83 @@ body {
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
-  max-width: 90em;
-  padding: 5em 1em 0; /* To offset the fixed header during navigation to id anchors */
+  width: 75%;
+  padding: 5em 3em 8em; /* Top padding to offset the fixed header during navigation to id anchors */
+}
+
+#education .completion {
+  flex: 1 1 auto;
+  text-align: right;
+}
+
+#education .completion, #experience .date-range .start-date, #experience .date-range .end-date {
+  display: inline-block;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+#education .emphasis, #education .institution {
+  flex-basis: 100%;
+  line-height: 1.6em;
+  margin: 0;
+}
+
+#education .institution {
+  margin-top: 0.5em;
+}
+
+#education .section-content ul {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+}
+
+#education .section-content ul li {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 40em;
+}
+
+#experience .date-range {
+  flex: 1 1 auto;
+  text-align: right;
+}
+
+#experience .date-range .end-date::before {
+  content: "– ";
+}
+
+#experience .description {
+  flex-basis: 100%;
+  line-height: 1.6em;
+  margin: 0.5em 0 1em;
+}
+
+#experience .section-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#experience .section-content ul li {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 40em;
+}
+
+#experience .title + .employer {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin: 0 0 0 3em;
+  position: relative;
+}
+
+#experience .title + .employer::before {
+  content: "–";
+  left: -1.75em;
+  position: absolute;
 }
 
 #external-links {
@@ -68,7 +143,7 @@ html, #names li .nickname {
   font-size: 2.5rem;
   margin: 0;
   order: 1;
-  padding: 0;
+  padding: 0.5em 0;
 }
 
 #names li {
