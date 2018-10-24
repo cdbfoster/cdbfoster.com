@@ -205,7 +205,7 @@ nav {
 }
 
 nav > ul, #external-links {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   flex-flow: row nowrap;
   font-size: 1.2rem;
