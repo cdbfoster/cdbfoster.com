@@ -142,11 +142,6 @@ body {
   color: transparent;
   display: block;
   height: 35px;
-  transition: background-color 0.25s;
-}
-
-#external-links a:hover {
-  background-color: white;
 }
 
 #external-links li:first-of-type a {
@@ -276,14 +271,6 @@ nav > ul a, #external-links a {
   font-family: "K2D", sans-serif;
   font-weight: 300;
   text-decoration: none;
-}
-
-nav > ul a, #names-small .nickname {
-  transition: color 0.25s;
-}
-
-nav > ul a:hover, #names-small:hover .nickname {
-  color: white;
 }
 
 section {
@@ -594,6 +581,14 @@ section {
     text-align: right;
   }
 
+  #external-links a {
+    transition: background-color 0.25s;
+  }
+
+  #external-links a:hover {
+    background-color: white;
+  }
+
   h3 {
     margin: 1em 0 0;
   }
@@ -623,6 +618,14 @@ section {
 
   nav > ul a, #external-links a {
     line-height: 1.25em;
+  }
+
+  nav > ul a, #names-small .nickname {
+    transition: color 0.25s;
+  }
+
+  nav > ul a:hover, #names-small:hover .nickname {
+    color: white;
   }
 
   nav > ul > li {
