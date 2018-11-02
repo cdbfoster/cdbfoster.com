@@ -560,9 +560,14 @@ section {
 
   [data-desire]:first-child::after {
     content: "Desire";
-    color: white;
+  }
+
+  [data-desire]:first-child::after, [data-experience]:first-child::before {
+    background-position-y: 22.4px; /* Apparently percentages are not supported here?  This should be 100% */
+    color: rgb(190, 190, 190);
+    height: 200%;
     text-align: right;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    top: -100%;
   }
 
   [data-experience]::before {
@@ -571,9 +576,6 @@ section {
 
   [data-experience]:first-child::before {
     content: "Experience";
-    color: white;
-    text-align: right;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 
   #education .completion {
