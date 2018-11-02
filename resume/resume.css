@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400");
 @import url('https://fonts.googleapis.com/css?family=K2D:100,300,400');
 
-* {
+*, ::after, ::before {
   box-sizing: border-box;
 }
 
@@ -11,21 +11,49 @@ a:focus {
 
 body {
   background-color: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
-  width: 75%;
-  padding: 5em 3em 8em; /* Top padding to offset the fixed header during navigation to id anchors */
+  margin: 0;
+  max-width: 100em;
+}
+
+[data-experience]::before, [data-desire]::after {
+  background-image: linear-gradient(to right, rgba(60, 60, 60, 0.0) 10%, rgba(60, 60, 60, 0.1)), linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(236, 255, 236));
+  background-repeat: no-repeat;
+  content: "";
+  display: block;
+  height: 100%;
+  padding-right: 0.5em;
+  position: absolute;
+  top: 0;
+}
+
+[data-experience="4"]::before, [data-desire="4"]::after {
+  background-size: 80%, 100%;
+}
+
+[data-experience="3"]::before, [data-desire="3"]::after {
+  background-size: 60%, 100%;
+}
+
+[data-experience="2"]::before, [data-desire="2"]::after {
+  background-size: 40%, 100%;
+}
+
+[data-experience="1"]::before, [data-desire="1"]::after {
+  background-size: 20%, 100%;
+}
+
+[data-experience="0"]::before {
+  background-size: 0%, 100%;
 }
 
 #education .completion {
-  flex: 1 1 auto;
-  text-align: right;
+  margin: 0.5em 0 0;
 }
 
 #education .completion, #experience .date-range .start-date, #experience .date-range .end-date {
   display: inline-block;
   font-size: 0.9em;
-  margin: 0;
+  text-shadow: 0 0 10px rgb(157, 215, 157);
 }
 
 #education .emphasis, #education .institution {
@@ -51,13 +79,22 @@ body {
   max-width: 40em;
 }
 
+#education .title {
+  margin-top: 0.5em;
+}
+
 #experience .date-range {
   flex: 1 1 auto;
+  margin: 0.5em 0 0 1em;
   text-align: right;
 }
 
 #experience .date-range .end-date::before {
   content: "– ";
+}
+
+#experience .date-range .start-date, #experience .date-range .end-date {
+  margin: 0;
 }
 
 #experience .description {
@@ -96,6 +133,34 @@ body {
   justify-content: flex-end;
 }
 
+#external-links li {
+  margin: 0 0.5em;
+}
+
+#external-links a {
+  background-color: rgb(204, 243, 204);
+  color: transparent;
+  display: block;
+  height: 35px;
+  transition: background-color 0.25s;
+}
+
+#external-links a:hover {
+  background-color: white;
+}
+
+#external-links li:first-of-type a {
+  mask-image: url("github.svg");
+  -webkit-mask-image: url("github.svg");
+  width: 36px;
+}
+
+#external-links li:last-of-type a {
+  mask-image: url("linkedin.svg");
+  -webkit-mask-image: url("linkedin.svg");
+  width: 46px;
+}
+
 h2, #titles {
   font-family: "K2D", sans-serif;
   font-size: 1.3rem;
@@ -109,14 +174,12 @@ h3 {
   font-family: "K2D", sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
-  margin: 1em 0 0;
 }
 
 header {
   background-color: rgb(60, 60, 60);
   display: flex;
   flex-flow: row nowrap;
-  height: calc(1.5em * 2 + 1.2em * 1.25);
   justify-content: space-between;
   left: 0;
   padding: 1.5em 1em;
@@ -126,12 +189,8 @@ header {
   width: 100%;
 }
 
-header.expanded {
-  height: calc(1.5em * 2 + 2 * 1.2em * 1.25);
-}
-
 html {
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(96, 121, 96);
   margin: 0;
   padding: 0;
   position: relative;
@@ -146,10 +205,7 @@ html, #names li .nickname {
 #names {
   display: flex;
   flex-flow: row wrap;
-  font-size: 2.5rem;
   margin: 0;
-  order: 1;
-  padding: 0.5em 0;
 }
 
 #names li {
@@ -175,13 +231,12 @@ html, #names li .nickname {
   display: flex;
   flex-flow: row wrap;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5rem;
   margin: 0 -3em 0 0;
   padding: 0;
 }
 
 #names-small .nickname {
-  color: white;
+  color: rgb(204, 243, 204);
   font-weight: 400;
 }
 
@@ -201,62 +256,38 @@ html, #names li .nickname {
 }
 
 #names-small li:not(:last-of-type) {
-  color: rgb(220, 220, 220);
+  color: rgb(168, 221, 168);
   font-weight: 300;
 }
 
 nav {
   flex: 1 0 auto;
-  transition: all 1s;
 }
 
 nav > ul, #external-links {
-  align-items: center;
-  display: flex;
-  flex-flow: row nowrap;
   font-size: 1.2rem;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav > ul > li, #external-links li {
-  list-style: none;
-  margin: 0 1em;
-}
-
 nav > ul a, #external-links a {
-  color: white;
+  color: rgb(204, 243, 204);
   font-family: "K2D", sans-serif;
   font-weight: 300;
-  line-height: 1.25em;
   text-decoration: none;
 }
 
+nav > ul a, #names-small .nickname {
+  transition: color 0.25s;
+}
+
+nav > ul a:hover, #names-small:hover .nickname {
+  color: white;
+}
+
 section {
-  align-items: baseline;
-  display: flex;
-  flex-flow: row nowrap;
-  margin-top: calc(3em - 7em); /* To offset the fixed header during navigation to id anchors */
-  padding-top: 7em;            /**/
-}
-
-section:first-of-type {
-  margin-top: calc(1em - 5em);
-  padding-top: 5em;
-}
-
-section > :first-child, #name > :nth-child(2) {
-  border: 0;
-  flex-basis: 30%;
-  padding-right: 2rem;
-  text-align: right;
-}
-
-section > :not(:first-child), #name > :first-child {
-  border-left: rgb(110, 110, 110) 1px solid;
-  flex-basis: 70%;
-  padding-left: 2rem;
-  text-align: left;
+  animation: fade-in 1s;
 }
 
 #skills .section-content ul, #technologies .section-content ul {
@@ -269,73 +300,14 @@ section > :not(:first-child), #name > :first-child {
 #skills .section-content li, #technologies .section-content li {
   margin-top: 1px;
   position: relative;
-  width: 16em;
 }
 
-#skills .section-content li[data-experience]:first-child::before, #technologies .section-content li[data-experience]:first-child::before {
-  content: "Experience";
-  color: rgb(255, 255, 255);
-  text-align: right;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-#skills .section-content li[data-experience]::before {
-  width: 16.5em;
-}
-
-#skills .section-content li[data-experience]::before, #technologies .section-content li[data-experience]::before {
-  left: 100%;
-}
-
-#skills .section-content li[data-experience]::before, #technologies .section-content li[data-experience]::before, #technologies .section-content li[data-desire]::after {
-  background-image: linear-gradient(to right, rgba(60, 60, 60, 0.0) 10%, rgba(60, 60, 60, 0.1)), linear-gradient(to right, rgb(255, 255, 255), rgb(245, 245, 245));
-  background-repeat: no-repeat;
-  content: "";
-  display: block;
-  height: 100%;
-  padding-right: 0.5em;
-  position: absolute;
-  top: 0;
-}
-
-#skills .section-content li[data-experience="4"]::before, #technologies .section-content li[data-experience="4"]::before, #technologies .section-content li[data-desire="4"]::after {
-  background-size: 80%, 100%;
-}
-
-#skills .section-content li[data-experience="3"]::before, #technologies .section-content li[data-experience="3"]::before, #technologies .section-content li[data-desire="3"]::after {
-  background-size: 60%, 100%;
-}
-
-#skills .section-content li[data-experience="2"]::before, #technologies .section-content li[data-experience="2"]::before, #technologies .section-content li[data-desire="2"]::after {
-  background-size: 40%, 100%;
-}
-
-#skills .section-content li[data-experience="1"]::before, #technologies .section-content li[data-experience="1"]::before, #technologies .section-content li[data-desire="1"]::after {
-  background-size: 20%, 100%;
-}
-
-#skills .section-content li[data-experience="0"]::before, #technologies .section-content li[data-experience="0"]::before {
-  background-size: 0%, 100%;
-}
-
-#technologies .section-content li[data-experience]::before, #technologies .section-content li[data-desire]::after {
-  width: 7.5em;
-}
-
-#technologies .section-content li[data-desire]::after {
-  left: calc(150% + 1em);
-}
-
-#technologies .section-content li[data-desire]:first-child::after {
-  content: "Desire";
-  color: rgb(255, 255, 255);
-  text-align: right;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+#titles {
+  list-style: none;
 }
 
 #titles li {
   font-weight: 300;
-  list-style: none;
 }
 
 .fade-in {
@@ -354,4 +326,384 @@ section > :not(:first-child), #name > :first-child {
 @keyframes fade-out {
   0% { opacity: 1; }
   100% { opacity: 0; }
+}
+
+@media (max-width: 511px) {
+  body {
+    padding: calc(1.5em * 2 + 2 * 6vw) 1em 5em;
+  }
+
+  header.expanded {
+    height: calc(1.5em * 2 + 2 * 6vw);
+  }
+
+  #names {
+    font-size: 7vw;
+  }
+
+  #names-small {
+    font-size: 6vw;
+    line-height: 6vw;
+  }
+
+  .nav-open, .nav-open.expanded {
+    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 6vw + 4 * 1.2rem * 1.5 + 35px);
+  }
+
+  section {
+    margin-top: calc(2em - 1.5em * 2 - 2 * 6vw - 0.5em);
+    padding-top: calc(1.5em * 2 + 2 * 6vw + 0.5em);
+  }
+}
+
+@media (min-width: 512px) and (max-width: 767px) {
+  body {
+    padding: calc(1.5em * 2 + 2 * 5vw) 1em 5em;
+  }
+
+  header.expanded {
+    height: calc(1.5em * 2 + 2 * 5vw);
+  }
+
+  #names {
+    font-size: 6vw;
+  }
+
+  #names-small {
+    font-size: 5vw;
+    line-height: 5vw;
+  }
+
+  .nav-open, .nav-open.expanded {
+    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 5vw + 4 * 1.2rem * 1.5 + 35px);
+  }
+
+  section {
+    margin-top: calc(2em - 1.5em * 2 - 2 * 5vw - 0.5em);
+    padding-top: calc(1.5em * 2 + 2 * 5vw + 0.5em);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 869px) {
+  body {
+    padding: calc(1.5em * 2 + 2 * 4vw) 1em 5em;
+  }
+
+  header.expanded {
+    height: calc(1.5em * 2 + 2 * 4vw);
+  }
+
+  #names {
+    font-size: 6vw;
+  }
+
+  #names-small {
+    font-size: 4vw;
+    line-height: 4vw;
+  }
+
+  .nav-open, .nav-open.expanded {
+    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 4vw + 4 * 1.2rem * 1.5 + 35px);
+  }
+
+  section {
+    margin-top: calc(2em - 1.5em * 2 - 2 * 4vw - 0.5em);
+    padding-top: calc(1.5em * 2 + 2 * 4vw + 0.5em);
+  }
+}
+
+@media (max-width: 869px) {
+  #education .completion {
+    flex: 1 1 100%;
+  }
+
+  #external-links {
+    display: none;
+  }
+
+  [data-experience]::before, [data-desire]::after {
+    width: 100%;
+    z-index: -1;
+  }
+
+  .expanded nav > ul > :first-child {
+    display: block;
+  }
+
+  h3, #titles {
+    margin: 0.3em 0 0;
+  }
+
+  header {
+    height: calc(1.5em * 2 + 35px);
+  }
+
+  header::after {
+    background-color: rgb(204, 243, 204);
+    content: "";
+    cursor: pointer;
+    display: block;
+    flex-shrink: 0;
+    height: 35px;
+    mask-image: url("hamburger.svg");
+    -webkit-mask-image: url("hamburger.svg");
+    width: 35px;
+  }
+
+  header.nav-open::after {
+    grid-area: hamburger;
+  }
+
+  #names {
+    display: none;
+    padding-left: 0;
+    padding-top: 0.5em;
+  }
+
+  nav > ul > * {
+    display: none;
+    margin: 0;
+  }
+
+  .nav-open {
+    display: grid;
+    grid-template-areas:
+      "nav hamburger"
+      "nav ."
+      "links .";
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    justify-content: space-between;
+  }
+
+  .nav-open #external-links {
+    display: flex;
+    grid-area: links;
+    justify-content: flex-start;
+    margin: 0.75em 0 0 0;
+  }
+
+  .nav-open #external-links li:first-of-type {
+    margin-left: 0;
+  }
+
+  .nav-open nav {
+    grid-area: nav;
+  }
+
+  .nav-open nav > ul {
+    flex-flow: column nowrap;
+  }
+
+  .nav-open nav > ul a {
+    line-height: 1.5em;
+  }
+
+  .nav-open nav > ul > * {
+    display: block;
+  }
+
+  .nav-open nav > ul > li:first-of-type {
+    margin-bottom: 0.75em;
+  }
+
+  :not(.show-desire) > ul > [data-desire]::after {
+    display: none;
+  }
+
+  section:first-of-type {
+    margin-top: 0.5em;
+    padding-top: 0;
+  }
+
+  section > :first-child {
+    border-bottom: rgb(110, 110, 110) 1px solid;
+    padding-bottom: 0.3em;
+  }
+
+  .show-desire > ul > [data-experience]::before {
+    display: none;
+  }
+
+  #skills h3, #technologies h3 {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #skills h3::after {
+    color: rgb(170, 170, 170);
+  }
+
+  #skills h3::after, #technologies h3::after {
+    content: "Experience";
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+  }
+
+  #skills .section-content li, #technologies .section-content li {
+    z-index: 0;
+  }
+
+  #technologies h3::after {
+    background-color: rgb(245, 245, 245);
+    border-radius: 0.5em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    color: rgb(100, 100, 100);
+    cursor: pointer;
+    padding: 0.4em;
+    text-align: center;
+    width: 100px;
+  }
+
+  #technologies .show-desire > h3::after {
+    content: "Desire";
+  }
+}
+
+@media (min-width: 870px) {
+  body {
+    padding: 5em 3em 8em; /* Top padding to offset the fixed header during navigation to id anchors */
+  }
+
+  [data-desire]::after {
+    left: calc(150% + 1em);
+  }
+
+  [data-desire]:first-child::after {
+    content: "Desire";
+    color: white;
+    text-align: right;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  [data-experience]::before {
+    left: 100%;
+  }
+
+  [data-experience]:first-child::before {
+    content: "Experience";
+    color: white;
+    text-align: right;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  #education .completion {
+    flex: 1 1 auto;
+    text-align: right;
+  }
+
+  h3 {
+    margin: 1em 0 0;
+  }
+
+  header {
+    height: calc(1.5em * 2 + 1.2em * 1.25);
+  }
+
+  header.expanded {
+    height: calc(1.5em * 2 + 2 * 1.2em * 1.25);
+  }
+
+  #names {
+    font-size: 2.5rem;
+    order: 1;
+    padding: 0.5em 0;
+  }
+
+  #names-small {
+    font-size: 1.5rem;
+  }
+
+  nav > ul, #external-links {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  nav > ul a, #external-links a {
+    line-height: 1.25em;
+  }
+
+  nav > ul > li {
+    margin: 0 1em;
+  }
+
+  section {
+    align-items: baseline;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: calc(3em - 7em); /* To offset the fixed header during navigation to id anchors */
+    padding-top: 7em;            /**/
+  }
+
+  section:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  section > :first-child, #name > :nth-child(2) {
+    border: 0;
+    flex-basis: 30%;
+    padding-right: 2rem;
+    text-align: right;
+  }
+
+  section > :not(:first-child), #name > :first-child {
+    border-left: rgb(110, 110, 110) 1px solid;
+    flex-basis: 70%;
+    padding-left: 2rem;
+    text-align: left;
+  }
+
+  #skills [data-experience]::before {
+    width: 16.5em;
+  }
+
+  #skills .section-content li, #technologies .section-content li {
+    width: 16em;
+  }
+
+  #technologies [data-experience]::before, #technologies [data-desire]::after {
+    width: 7.5em;
+  }
+}
+
+/* Header horizontal collapse on medium-width layouts */
+@media (min-width: 870px) and (max-width: 1023px) {
+  #external-links {
+    padding: 0.75em 0.5em 0 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  header.expanded {
+    height: calc(1.5em * 2 + 2 * 1.2em * 1.25 + 1em);
+  }
+
+  nav {
+    position: relative;
+  }
+
+  nav > ul {
+    align-items: flex-end;
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav > ul, #external-links {
+    align-items: center;
+  }
+}
+
+/* Backdrop and drop shadow on wide layouts */
+@media (min-width: 1280px) {
+  body {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    width: 75%;
+  }
 }
