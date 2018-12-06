@@ -549,7 +549,7 @@ section {
   }
 }
 
-@media (min-width: 870px) {
+@media (min-width: 870px), print {
   body {
     padding: 5em 3em 8em; /* Top padding to offset the fixed header during navigation to id anchors */
   }
@@ -666,7 +666,7 @@ section {
   }
 
   #skills .section-content li, #technologies .section-content li {
-    width: 16em;
+    width: 16.5em;
   }
 
   #technologies [data-experience]::before, #technologies [data-desire]::after {
@@ -710,5 +710,120 @@ section {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
     width: 75%;
+  }
+}
+
+@media only print {
+  body {
+    display: grid;
+    grid-template-areas:
+      "name name"
+      "skills bio"
+      "skills experience"
+      "technologies experience"
+      "technologies education";
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto 0.6in auto auto;
+    padding: 0;
+  }
+
+  [data-desire]::after {
+    left: calc(100% + 5.75em + 0.5em);
+    padding-right: 0;
+  }
+
+  [data-desire]:first-child::after, [data-experience]:first-child::before {
+    background-position-y: 16px;
+  }
+
+  #education {
+    grid-area: education;
+  }
+
+  #experience {
+    grid-area: experience;
+  }
+
+  h2, #titles {
+    font-size: 1.1rem;
+  }
+
+  header {
+    display: none;
+  }
+
+  html {
+    background-color: initial;
+    font-size: 70%;
+  }
+
+  #name {
+    align-items: start;
+    grid-area: name;
+    margin-bottom: 1em;
+  }
+
+  #name > :first-child {
+    border-left: none;
+    flex-basis: 50%;
+    order: initial;
+    padding: 0;
+  }
+
+  #names {
+    font-size: 2rem;
+  }
+
+  section {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  section:not(:first-of-type) {
+    flex-flow: column nowrap;
+  }
+
+  section:not(:first-of-type) > :first-child {
+    flex-basis: auto;
+  }
+
+  .section-content {
+    border-left: none !important;
+    border-top: rgb(110, 110, 110) 1px solid;
+    padding: 0 !important;
+  }
+
+  #skills {
+    grid-area: skills;
+  }
+
+  #skills [data-experience]::before {
+    width: 12em;
+  }
+
+  #skills .section-content, #technologies .section-content {
+    margin-right: -12em;
+    padding-right: 12em !important;
+  }
+
+  #skills .section-content li, #technologies .section-content li {
+    width: 16em;
+  }
+
+  #technologies {
+    grid-area: technologies;
+  }
+
+  #technologies [data-experience]::before, #technologies [data-desire]::after {
+    width: 5.75em;
+  }
+
+  #titles {
+    flex-basis: 50% !important;
+    text-align: left !important;
+  }
+
+  #titles > :not(:first-child) {
+    font-size: 0.75em;
   }
 }
