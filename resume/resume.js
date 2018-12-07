@@ -258,3 +258,37 @@ for (let element of document.querySelectorAll("#technologies h3")) {
         }
     });
 }
+
+// Add in some contact info before printing
+window.addEventListener("beforeprint", function () {
+    let contactInfo = document.createElement("ul");
+    contactInfo.id = "contact-info";
+
+    let email = document.createElement("li");
+    email.innerHTML = "cdbfoster@gmail.com";
+
+    let phone = document.createElement("li");
+    phone.innerHTML = "(517) 331-4757";
+
+    let github = document.createElement("li");
+    github.innerHTML = "https://github.com/cdbfoster";
+
+    let linkedin = document.createElement("li");
+    linkedin.innerHTML = "https://linkedin.com/in/cdbfoster";
+
+    let resume = document.createElement("li");
+    resume.innerHTML = "https://cdbfoster.com/resume";
+
+    contactInfo.appendChild(email);
+    contactInfo.appendChild(phone);
+    contactInfo.appendChild(github);
+    contactInfo.appendChild(linkedin);
+    contactInfo.appendChild(resume);
+
+    document.querySelector("#name").appendChild(contactInfo);
+});
+
+// ...and get rid of it when we're done
+window.addEventListener("afterprint", function () {
+    document.querySelector("#name").removeChild(document.querySelector("#contact-info"));
+});

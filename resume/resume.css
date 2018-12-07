@@ -9,6 +9,11 @@ a:focus {
   outline: none; /* For that ugly dotted line around links in Firefox */
 }
 
+#bio p {
+  line-height: 1.6em;
+  max-width: 40em;
+}
+
 body {
   background-color: white;
   margin: 0;
@@ -315,7 +320,7 @@ section {
   100% { opacity: 0; }
 }
 
-@media (max-width: 511px) {
+@media screen and (max-width: 511px) {
   body {
     padding: calc(1.5em * 2 + 2 * 6vw) 1em 5em;
   }
@@ -343,7 +348,7 @@ section {
   }
 }
 
-@media (min-width: 512px) and (max-width: 767px) {
+@media screen and (min-width: 512px) and (max-width: 767px) {
   body {
     padding: calc(1.5em * 2 + 2 * 5vw) 1em 5em;
   }
@@ -362,7 +367,7 @@ section {
   }
 
   .nav-open, .nav-open.expanded {
-    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 5vw + 4 * 1.2rem * 1.5 + 35px);
+    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 5vw + 5 * 1.2rem * 1.5 + 35px);
   }
 
   section {
@@ -371,7 +376,7 @@ section {
   }
 }
 
-@media (min-width: 768px) and (max-width: 869px) {
+@media screen and (min-width: 768px) and (max-width: 869px) {
   body {
     padding: calc(1.5em * 2 + 2 * 4vw) 1em 5em;
   }
@@ -390,7 +395,7 @@ section {
   }
 
   .nav-open, .nav-open.expanded {
-    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 4vw + 4 * 1.2rem * 1.5 + 35px);
+    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 4vw + 5 * 1.2rem * 1.5 + 35px);
   }
 
   section {
@@ -399,7 +404,7 @@ section {
   }
 }
 
-@media (max-width: 869px) {
+@media screen and (max-width: 869px) {
   #education .completion {
     flex: 1 1 100%;
   }
@@ -458,8 +463,6 @@ section {
       "nav hamburger"
       "nav ."
       "links .";
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto auto;
     justify-content: space-between;
   }
 
@@ -549,7 +552,7 @@ section {
   }
 }
 
-@media (min-width: 870px), print {
+@media screen and (min-width: 870px), print {
   body {
     padding: 5em 3em 8em; /* Top padding to offset the fixed header during navigation to id anchors */
   }
@@ -675,7 +678,7 @@ section {
 }
 
 /* Header horizontal collapse on medium-width layouts */
-@media (min-width: 870px) and (max-width: 1023px) {
+@media screen and (min-width: 870px) and (max-width: 1023px) {
   #external-links {
     padding: 0.75em 0.5em 0 0;
     position: absolute;
@@ -698,14 +701,14 @@ section {
   }
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   nav > ul, #external-links {
     align-items: center;
   }
 }
 
 /* Backdrop and drop shadow on wide layouts */
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
   body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
@@ -714,6 +717,11 @@ section {
 }
 
 @media only print {
+  #bio p {
+    line-height: 1.2em;
+    margin: 0.75em 0;
+  }
+
   body {
     display: grid;
     grid-template-areas:
@@ -724,6 +732,15 @@ section {
       "technologies education";
     grid-template-columns: 50% 50%;
     grid-template-rows: auto auto 0.6in auto auto;
+    padding: 0;
+  }
+
+  #contact-info {
+    border-left: none;
+    font-size: 0.85em;
+    grid-area: contact-info;
+    list-style: none;
+    margin: 0;
     padding: 0;
   }
 
@@ -744,6 +761,14 @@ section {
     grid-area: experience;
   }
 
+  #experience .description {
+    margin-bottom: 0.5em;
+  }
+
+  #experience .title {
+    margin-top: 0.75em;
+  }
+
   h2, #titles {
     font-size: 1.1rem;
   }
@@ -759,19 +784,23 @@ section {
 
   #name {
     align-items: start;
+    display: grid;
     grid-area: name;
+    grid-template-areas:
+      "names titles"
+      "names contact-info";
+    grid-template-columns: 50% 50%;
     margin-bottom: 1em;
   }
 
   #name > :first-child {
     border-left: none;
-    flex-basis: 50%;
-    order: initial;
     padding: 0;
   }
 
   #names {
     font-size: 2rem;
+    grid-area: names;
   }
 
   section {
@@ -819,11 +848,7 @@ section {
   }
 
   #titles {
-    flex-basis: 50% !important;
+    grid-area: titles;
     text-align: left !important;
-  }
-
-  #titles > :not(:first-child) {
-    font-size: 0.75em;
   }
 }
