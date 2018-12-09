@@ -339,7 +339,7 @@ section {
   }
 
   .nav-open, .nav-open.expanded {
-    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 6vw + 4 * 1.2rem * 1.5 + 35px);
+    height: calc(1.5em * 2 + 0.75em * 2 + 2 * 6vw + 5 * 1.2rem * 1.5 + 35px);
   }
 
   section {
