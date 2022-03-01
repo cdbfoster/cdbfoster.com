@@ -21,7 +21,7 @@ body {
 }
 
 [data-experience]::before, [data-desire]::after {
-  background-image: linear-gradient(to right, rgba(60, 60, 60, 0.0) 0%, rgba(60, 60, 60, 0.145)), linear-gradient(to right, rgb(255, 255, 255) 40%, rgb(188, 230, 188));
+  background-image: linear-gradient(to right, rgb(230, 255, 230), rgb(165, 220, 165)), linear-gradient(to right, rgba(60, 60, 60, 0.0), rgba(188, 230, 188, 0.5));
   background-repeat: no-repeat;
   content: "";
   display: block;
